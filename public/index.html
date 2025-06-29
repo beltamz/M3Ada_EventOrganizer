@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Organizer</title>
+    <link rel="icon" href="./img/5894393.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class= "main-container">
+
+        <div class="left-panel">
+            <div class="container">
+                
+                <div>
+                    <form id="loginForm">
+                        <h1 class="bigtitles">Login</h1>
+                        <input type="email" placeholder="Email" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit">Log In</button>
+                    </form>
+                </div>
+
+                <div>
+                    <form id="registerForm">
+                        <h1 class="bigtitles">Register</h1>
+                        <input type="email" placeholder="Email" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit">Register</button>
+                    </form>
+                </div>
+                <div id="message"></div>
+                
+            </div>  
+        </div>
+
+        <div class="right-panel">
+            
+            <div class="create-events">
+                <h1 class="bigtitles">Events Organizer</h1>
+
+                <form id="create-events-form">
+                    <div class="create-events-fields">
+                        <input type="text" id="name" placeholder="Event" required>
+                        <input type="text" id="place" placeholder="Place" required>
+                        <input type="date" id="date" placeholder="Date" required>
+                        <input type="time" id="hour" placeholder="Time" required>
+                        <button type="submit">Add Event</button>
+                    </div>
+                </form>
+        
+        
+       
+            </div>
+
+            <div class="upcoming-events">  
+                <h2 class="bigtitles">Upcoming events</h2>
+                <table id="events-table" >
+                    <thead>
+                        <tr>
+                            <!--Encabezado de la tabla-->
+                            <th>Id</th>
+                            <th>Event</th>
+                            <th>Place</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Reunión</td>
+                            <td>Oficina</td>
+                            <td>2025-07-01</td>
+                            <td>15:00</td>
+                            <td>
+                                <button class="edit-btn">Edit</button>
+                                <button class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <!--Cuerpo de la tabla con el identificador 'contact-table' donde se agregaran directamente los contactos-->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <!--Incluye un archivo de js externo llamado srcipt.js para manejar la logica funcional de la pagina-->
+</body>
+</html>

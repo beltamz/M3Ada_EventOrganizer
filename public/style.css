@@ -1,0 +1,115 @@
+/*Estilo general*/
+body, html {
+    height: 100%;
+    margin:0;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+/*Container principal + de derecha + de izquierda*/
+.main-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: #e29578 ;
+    background-size: cover;
+    background-position: center;
+}
+
+.left-panel, .right-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-panel { flex: 1; }
+.right-panel { flex: 2; padding: 40px 20px; }
+
+
+/* Formularios de Login y Registro*/
+#loginForm, #registerForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+#loginForm input, #registerForm input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botones generales */
+button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #ff9ef5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+button:hover { background-color: #ff51ff; }
+
+/* Events */
+.create-events, .upcoming-events {
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+.create-events { background-color: peachpuff; }
+.upcoming-events { background-color: #fffbe6; flex: 1; overflow-y: auto; margin-bottom: 0; }
+
+/* Formulario de eventos */
+#create-events-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.create-events-fields {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+#create-events-form input[type="text"],
+#create-events-form input[type="date"],
+#create-events-form input[type="time"] {
+    width: 120px;
+    min-width: 0;
+    margin: 0;
+}
+
+/*Titulos importantes*/
+
+.bigtitles{
+    color: black; 
+    text-align: center;
+    font-size: 30px;
+}
+
+
+/*Tabla upcoming events*/
+.upcoming-events table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1px; /* Espacio vertical entre filas */
+}
+
+.upcoming-events th, 
+.upcoming-events td {
+    padding: 12px 16px;   /* Espacio interno en celdas */
+    text-align: center;
+}
