@@ -70,7 +70,7 @@ form.addEventListener('submit', async (e) => {
     if (editingEventId) {
         // Si estamos editando, hace un PUT
         await fetch(`${API_URL_EVENTS}/${editingEventId}`, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: { 
                 'Content-Type': 'application/json',
             },
