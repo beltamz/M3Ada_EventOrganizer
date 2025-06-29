@@ -16,7 +16,7 @@ interface AuthRequest extends Request {
     user?: any
 }
 
-const dataBasePath = path.join(process.cwd(), 'backend', 'src', 'database', 'users.json')
+const dataBasePath = path.join(process.cwd(), 'src', 'database', 'users.json')
 const SECRET_KEY = process.env.SECRET_KEY || 'belu'
 
 export const registerUser = async (req: Request, res: Response) => {
