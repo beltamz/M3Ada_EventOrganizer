@@ -53,6 +53,7 @@ function renderEvents(events) {
                 document.getElementById('date').value = event.date;
                 document.getElementById('hour').value = event.hour;
                 editingEventId = id;
+                document.querySelector('#create-events-form button[type="submit"]').textContent = 'Confirm Edit';
             }
         });
     });
@@ -87,8 +88,10 @@ form.addEventListener('submit', async (e) => {
             body: JSON.stringify({ id: Date.now().toString(), name, place, date, hour })
         });
     }
-    form.reset() //limpiar el form
-    fetchEvents() // actualizar la tabla de eventos
+    form.reset();
+    editingEventId = null;
+    document.querySelector('#create-events-form button[type="submit"]').textContent = 'Add Event';
+    fetchEvents();
 })
 
 // eliminar un evento
