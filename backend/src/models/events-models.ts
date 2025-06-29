@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const filePath= path.join(__dirname,'../database/events.json')//conecto con mi base de datos Json
+const filePath= path.join(process.cwd(), 'backend', 'src', 'database', 'events.json')//conecto con mi base de datos Json
 
 interface Event{
     id : string,
