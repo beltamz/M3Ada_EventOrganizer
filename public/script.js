@@ -33,10 +33,10 @@ function renderEvents(events) {
                 <button class="delete-btn" data-id="${event.id}">Delete</button>
             </td>
         `;
-        table.appendChild(tr);
+        tbody.appendChild(tr); // <--- ¡Aquí el cambio!
     });
 
-    table.querySelectorAll('.delete-btn').forEach(btn => {
+    tbody.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const id = btn.getAttribute('data-id');
             deleteEvent(id);
@@ -44,19 +44,18 @@ function renderEvents(events) {
     });
 
     tbody.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const id = btn.getAttribute('data-id');
-                const event = events.find(ev => ev.id === id);
-                if (event) {
-                    document.getElementById('name').value = event.name;
-                    document.getElementById('place').value = event.place;
-                    document.getElementById('date').value = event.date;
-                    document.getElementById('hour').value = event.hour;
-                    editingEventId = id;
-                }
-            });
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            const event = events.find(ev => ev.id === id);
+            if (event) {
+                document.getElementById('name').value = event.name;
+                document.getElementById('place').value = event.place;
+                document.getElementById('date').value = event.date;
+                document.getElementById('hour').value = event.hour;
+                editingEventId = id;
+            }
         });
-
+    });
 }
 
 // manejo del evento de enviar el formulario para agregar el evento
