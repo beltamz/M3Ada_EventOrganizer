@@ -15,6 +15,7 @@ async function fetchEvents() {
     renderEvents(events) // muestra los eventos de la table
 }
 
+let editingEventId = null;
 // renderizamos los eventos de la tabla
 function renderEvents(events) {
     const tbody = document.getElementById('events-tbody');
@@ -43,21 +44,18 @@ function renderEvents(events) {
     });
 
     tbody.querySelectorAll('.edit-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const id = btn.getAttribute('data-id');
-            // Busca el evento a editar
-            const event = events.find(ev => ev.id === id);
-            if (event) {
-                // Rellena el formulario con los datos del evento
-                document.getElementById('name').value = event.name;
-                document.getElementById('place').value = event.place;
-                document.getElementById('date').value = event.date;
-                document.getElementById('hour').value = event.hour;
-                // Guarda el id editando en una variable global
-                window.editingEventId = id;
-            }
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                const event = events.find(ev => ev.id === id);
+                if (event) {
+                    document.getElementById('name').value = event.name;
+                    document.getElementById('place').value = event.place;
+                    document.getElementById('date').value = event.date;
+                    document.getElementById('hour').value = event.hour;
+                    editingEventId = id;
+                }
+            });
         });
-    });
 
 }
 
@@ -69,17 +67,16 @@ form.addEventListener('submit', async (e) => {
     const date = document.getElementById('date').value
     const hour = document.getElementById('hour').value
 
-    if (window.editingEventId) {
+    if (editingEventId) {
         // Si estamos editando, hace un PUT
-        await fetch(`${API_URL_EVENTS}/${window.editingEventId}`, {
+        await fetch(`${API_URL_EVENTS}/${editingEventId}`, {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token') || ''}`
             },
             body: JSON.stringify({ name, place, date, hour })
         });
-        window.editingEventId = null; // Limpia el estado de edición
+        editingEventId = null; // Limpia el estado de edición
     } else {
         // Si no, crea un nuevo evento
         await fetch(API_URL_EVENTS, {
