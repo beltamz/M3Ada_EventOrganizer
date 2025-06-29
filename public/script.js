@@ -74,7 +74,7 @@ form.addEventListener('submit', async (e) => {
             headers: { 
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name, place, date, hour })
+            body: JSON.stringify({ id:editingEventId,name, place, date, hour })
         });
         editingEventId = null; // Limpia el estado de edición
     } else {
