@@ -1,7 +1,7 @@
 const API_URL_USERS = '/users' //url base para las solis de usuarios
 const API_URL_EVENTS = '/events' //url base para las solis de events
 
-document.getElementById('message').textContent = 'Welcome, Stranger!';
+document.getElementById('message').textContent = 'Welcome, Stranger! 😶‍🌫️';
 const form = document.getElementById('create-events-form') // formulario para agregar eventos
 const formLogin=document.getElementById('loginForm')
 const formRegister=document.getElementById('registerForm')
@@ -158,7 +158,7 @@ async function fetchProfile() {
     if (res.ok) {
         const data = await res.json();
         const username = data.user.email.split('@')[0];
-        messageDiv.textContent = `Welcome, ${username}!`;
+        messageDiv.textContent = `Welcome, ${username} 😎!`;
     } else {
         localStorage.removeItem('token');
         messageDiv.textContent = 'Session finished. Please, log in again.';
