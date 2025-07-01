@@ -1,14 +1,21 @@
 const API_URL_USERS = '/users' //url base para las solis de usuarios
 const API_URL_EVENTS = '/events' //url base para las solis de events
 
+//Para evitar que el usuario ingrese una fecha anterior al dia actual
+document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', today);
+});
+//Mensaje general de bienvenida, antes del login
 document.getElementById('message').textContent = 'Welcome, Stranger! 😶‍🌫️';
+
 const form = document.getElementById('create-events-form') // formulario para agregar eventos
 const formLogin=document.getElementById('loginForm')
 const formRegister=document.getElementById('registerForm')
 const eventTable = document.getElementById('events-table') // tabla donde se muestran los eventos
 const messageDiv = document.getElementById('message')
 
-//? ----------------------------Manejo eventos------------------------------------
+// ----------------------------Manejo eventos------------------------------------
 //funcion para obtener los eventos desde el back
 async function fetchEvents() {
     const res = await fetch(API_URL_EVENTS) // realizo una soli get al back
@@ -102,7 +109,7 @@ async function deleteEvent(id) {
 }
 
 
-//? ----------------------------Manejo usuarios------------------------------------
+// ----------------------------Manejo usuarios------------------------------------
 // Registro de usuario
 formRegister.addEventListener('submit', async (e) => {
     e.preventDefault();
