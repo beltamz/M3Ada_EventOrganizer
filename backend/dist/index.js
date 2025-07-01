@@ -20,18 +20,7 @@ app.get('*', (req, res) => {
 });
 app.use(error_middleware_1.errorMiddleware);
 const PORT = process.env.PORT || 3000;
-// DEBUG: Mostrar rutas registradas
-const listRoutes = (prefix, router) => {
-    router.stack.forEach((layer) => {
-        if (layer.route && layer.route.path) {
-            console.log(`${prefix}${layer.route.path}`);
-        }
-    });
-};
-console.log("📋 Rutas en /events:");
-listRoutes('/events', events_routes_1.default);
-console.log("📋 Rutas en /users:");
-listRoutes('/users', auth_routes_1.default);
+
 app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`);
 });
