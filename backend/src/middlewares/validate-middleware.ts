@@ -1,5 +1,6 @@
 import express, {Request, Response, NextFunction} from 'express'
 
+//Validamos cada valor pasado de cada evento
 export const validateEvent=(req:Request, res: Response, next:NextFunction): void=>{
     const {name, place, date, hour}= req.body
     if(!name || typeof name !=='string'){

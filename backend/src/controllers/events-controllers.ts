@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import{EventsModel} from '../models/events-models'
 
 //controlador para obtener todos los eventos
@@ -28,7 +27,7 @@ export const updateEvent= (req: Request,res: Response): void=>{
 //controlador para eliminar un evento
 export const deleteEvent= (req: Request,res: Response): void=>{
     const {id} = req.params
-    const isDeleted= EventsModel.deleteEvent(id)
+    const isDeleted= EventsModel.deleteEvent(id)//metodo en el modelo
     if(!isDeleted){
         res.status(404).json({error: "Event couldn't be deleted: It was not found"})
         return

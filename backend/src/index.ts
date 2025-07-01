@@ -5,39 +5,24 @@ import authRouter from './routes/auth-routes'
 import { errorMiddleware } from './middlewares/error-middleware'
 import dotenv from 'dotenv'
 
-dotenv.config()
+dotenv.config();//cargamos nuestra variable de entorno
 
-const app: Application = express()
-app.use(express.json())
+const app: Application = express();
+app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../../public')))
+app.use(express.static(path.join(__dirname, '../../public')));
 
-app.use('/events', eventsRouter)
-app.use('/users', authRouter)
-
-
+//Endpoints general para eventos y usuarios
+app.use('/events', eventsRouter);
+app.use('/users', authRouter);
+//El servidor muestra siempre esta pagina princial al utilizar la pagina
 app.get('*', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../../public/index.html'))
 })
 
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 
-const PORT = process.env.PORT || 3000
-
-// DEBUG: Mostrar rutas registradas
-const listRoutes = (prefix: string, router: any) => {
-    router.stack.forEach((layer: any) => {
-        if (layer.route && layer.route.path) {
-            console.log(`${prefix}${layer.route.path}`);
-        }
-    });
-}
-
-console.log("📋 Rutas en /events:");
-listRoutes('/events', eventsRouter);
-
-console.log("📋 Rutas en /users:");
-listRoutes('/users', authRouter);
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`)
